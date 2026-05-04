@@ -197,161 +197,7 @@ window.onclick = function(e){
     if(e.target === m) m.style.display = 'none';
   });
 }
-
-// регистрация
-function register(){
-  let user = document.getElementById('regUser').value;
-  let pass = document.getElementById('regPass').value;
-
-  if(!user || !pass){
-    alert("Заполни поля");
-    return;
-  }
-
-  localStorage.setItem(user, pass);
-  alert("Аккаунт создан!");
-}
-
-// вход
-function login(){
-  let user = document.getElementById('loginUser').value;
-  let pass = document.getElementById('loginPass').value;
-
-  let saved = localStorage.getItem(user);
-
-  if(saved === pass){
-    localStorage.setItem("currentUser", user); // сохраняем сессию
-    showUser();
-    closeModals();
-  } else {
-    alert("Ошибка входа");
-  }
-}
-
-// показать пользователя
-function showUser(){
-  let user = localStorage.getItem("currentUser");
-  let nav = document.getElementById("nav");
-
-  if(user){
-    nav.innerHTML = `
-      <span>👋 Привет, <b>${user}</b></span>
-      <button onclick="logout()">Выйти</button>
-    `;
-  }
-}
-
-// выход
-function logout(){
-  localStorage.removeItem("currentUser");
-  location.reload();
-}
-
-// закрыть модалки
-function closeModals(){
-  document.querySelectorAll('.modal').forEach(m=>{
-    m.style.display = 'none';
-  });
-}
-
-// проверка при загрузке
-window.onload = function(){
-  showUser();
-}
-</script>
-
 	
-</style>
-</head>
-
-<div class="modal" id="productModal">
-  <div class="modal-content">
-    <h3 id="productTitle"></h3>
-    <p id="productText"></p>
-    <button onclick="closeProduct()">Закрыть</button>
-  </div>
-</div>
-
-<body>
-
-
-<header>
-  <div class="logo">SoapCraft</div>
-  <nav id="nav">
-  <button class="login-btn" onclick="openModal('login')">Войти</button>
-  <button class="reg-btn" onclick="openModal('register')">Регистрация</button>
-</nav>
-</header>
-
-<section class="hero">
-  <h1>Take a look!</h1>
-  <p>Лучшее мыло для здоровья и красоты кожи</p>
-</section>
-
-<section class="features">
-  <div class="card">
-    <img src="IMG_20260429_175325.png">
-	 <button onclick="openProduct('salt')">Подробнее</button>
-    <h3>Соляное мыло</h3>
-    
-  </div>
-
-  <div class="card">
-    <img src="IMG_20260429_184106.webp">
-	<button onclick="openProduct('baby')">Подробнее</button>
-    <h3>Детское мыло</h3>
-    
-  </div>
-
-  <div class="card">
-    <img src="IMG_20260429_184852.png">
-	<button onclick="openProduct('coal')">Подробнее</button>
-    <h3>Угольное мыло</h3>
-    
-  </div>
-  
-  <div class="card">
-    <img src="IMG_20260429_185306.png">
-	<button onclick="openProduct('laundry_soap')">Подробнее</button>
-    <h3>Хозяйственное мыло на кокосовом масле</h3>
-    
-  </div>
-  
-  
-  <div class="card">
-    <img src="IMG_20260429_185458.png">
-	<button onclick="openProduct('tar')">Подробнее</button>
-    <h3>Дегтярное мыло</h3>
-    
-  </div>
-</section>
-
-<footer>
-  © 2026 SoapCraft
-</footer>
-
-<!-- LOGIN MODAL -->
-<div class="modal" id="loginModal">
-  <div class="modal-content">
-    <h3>Вход</h3>
-    <input type="text" id="loginUser" placeholder="Логин">
-    <input type="password" id="loginPass" placeholder="Пароль">
-    <button onclick="login()">Войти</button>
-  </div>
-</div>
-
-<!-- REGISTER MODAL -->
-<div class="modal" id="registerModal">
-  <div class="modal-content">
-    <h3>Регистрация</h3>
-    <input type="text" id="regUser" placeholder="Логин">
-    <input type="password" id="regPass" placeholder="Пароль">
-    <button onclick="register()">Создать</button>
-  </div>
-</div>
-
-<script>
-
 function openProduct(type){
   let title = "";
   let text = "";
@@ -626,11 +472,7 @@ function closeProduct(){
   });
 }
 
-// выход
-function logout(){
-  localStorage.removeItem("currentUser");
-  location.reload();
-}
+
 
 // закрыть модалки
 function closeModals(){
@@ -639,10 +481,6 @@ function closeModals(){
   });
 }
 
-// проверка при загрузке
-window.onload = function(){
-  showUser();
-}
 </script>
 
 </body>
