@@ -10,7 +10,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
-  background: url("sea.jpg") no-repeat center center fixed;
+  background: url("image/sea.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -34,9 +34,16 @@ nav button {
   cursor: pointer;
 }
 
+.login-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid #38bdf8;
+}
 
-
-
+.reg-btn {
+  background: #38bdf8;
+  color: black;
+}
 
 /* HERO */
 .hero {
@@ -56,29 +63,20 @@ nav button {
 .features {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  gap: 120px;
   padding: 40px;
-}
-
-/* 📱 ТЕЛЕФОН */
-@media (max-width: 768px) {
-  .features {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 20px;
-  }
+  align-items: stretch; /* важно */
 }
 .card {
-  background: rgba(255,255,255,0.08);
-  padding: 15px;
-  border-radius: 20px; /* было 116px — это ломает дизайн */
-}
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 116px;
+  transition: 0.3s;
 
-/* 📱 мобилка */
-@media (max-width: 768px) {
-  .card {
-    padding: 12px;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* выравнивает */
 }
 .card:hover {
   transform: translateY(-10px);
@@ -86,44 +84,9 @@ nav button {
 
 .card img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  nav {
-    display: flex;
-    gap: 10px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    padding: 60px 15px;
-  }
-
-  .hero h1 {
-    font-size: 28px;
-  }
-
-  .hero p {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 768px) {
-  .modal-content {
-    width: 90%;
-    max-height: 70vh;
-    padding: 20px;
-  }
+  height: 200px;       /* фикс высота */
+  object-fit: cover;   /* не растягивает криво */
+  border-radius: 20px;
 }
 
 /* MODAL */
@@ -179,19 +142,22 @@ footer {
   cursor: pointer;
   font-weight: bold;
 }
-<script>
-// открыть модалку
-function openModal(type){
-  document.getElementById(type + 'Modal').style.display = 'flex';
-}
 
-	<header>
-  <div class="logo">SoapCraft</div>
-  <nav id="nav">
-  <button class="login-btn" onclick="openModal('login')">Войти</button>
-  <button class="reg-btn" onclick="openModal('register')">Регистрация</button>
-</nav>
-</header>
+</style>
+</head>
+
+<div class="modal" id="productModal">
+  <div class="modal-content">
+    <h3 id="productTitle"></h3>
+    <p id="productText"></p>
+    <button onclick="closeProduct()">Закрыть</button>
+  </div>
+</div>
+
+<body>
+
+
+
 
 <section class="hero">
   <h1>Take a look!</h1>
@@ -240,13 +206,12 @@ function openModal(type){
   © 2026 SoapCraft
 </footer>
 
-// закрытие по клику вне окна
-window.onclick = function(e){
-  document.querySelectorAll('.modal').forEach(m=>{
-    if(e.target === m) m.style.display = 'none';
-  });
-}
-	
+
+
+
+
+<script>
+
 function openProduct(type){
   let title = "";
   let text = "";
@@ -494,11 +459,10 @@ function openProduct(type){
 
   document.getElementById("productTitle").innerText = title;
   document.getElementById("productText").innerText = text;
-	
-	document.querySelector("#productModal .modal-content").scrollTop = 0;
+	document.getElementById("productModal").style.display = "flex";
+	document.querySelector(".modal-content").scrollTop = 0;
   document.getElementById("productModal").style.display = "flex";
 }
-
 
 
 function closeProduct(){
@@ -519,6 +483,10 @@ function closeModals(){
   });
 }
 
+// проверка при загрузке
+window.onload = function(){
+  
+}
 </script>
 
 </body>
