@@ -34,15 +34,9 @@ nav button {
   cursor: pointer;
 }
 
-.login-btn {
- background: #38bdf8;
-  color: black;
-}
 
-.reg-btn {
-  background: #38bdf8;
-  color: black;
-}
+
+
 
 /* HERO */
 .hero {
@@ -450,18 +444,7 @@ function openProduct(type){
   document.getElementById("productModal").style.display = "flex";
 }
 
-// показать пользователя
-function showUser(){
-  let user = localStorage.getItem("currentUser");
-  let nav = document.getElementById("nav");
 
-  if(user){
-    nav.innerHTML = `
-      <span>👋 Привет, <b>${user}</b></span>
-      <button onclick="logout()">Выйти</button>
-    `;
-  }
-}
 
 function closeProduct(){
   document.getElementById("productModal").style.display = "none";
