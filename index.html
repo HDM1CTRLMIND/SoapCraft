@@ -185,6 +185,61 @@ function openModal(type){
   document.getElementById(type + 'Modal').style.display = 'flex';
 }
 
+	<header>
+  <div class="logo">SoapCraft</div>
+  <nav id="nav">
+  <button class="login-btn" onclick="openModal('login')">Войти</button>
+  <button class="reg-btn" onclick="openModal('register')">Регистрация</button>
+</nav>
+</header>
+
+<section class="hero">
+  <h1>Take a look!</h1>
+  <p>Лучшее мыло для здоровья и красоты кожи</p>
+</section>
+
+<section class="features">
+  <div class="card">
+    <img src="image/IMG_20260429_175325.png">
+	 <button onclick="openProduct('salt')">Подробнее</button>
+    <h3>Соляное мыло</h3>
+    
+  </div>
+
+  <div class="card">
+    <img src="image/IMG_20260429_184106.webp">
+	<button onclick="openProduct('baby')">Подробнее</button>
+    <h3>Детское мыло</h3>
+    
+  </div>
+
+  <div class="card">
+    <img src="image/IMG_20260429_184852.png">
+	<button onclick="openProduct('coal')">Подробнее</button>
+    <h3>Угольное мыло</h3>
+    
+  </div>
+  
+  <div class="card">
+    <img src="image/IMG_20260429_185306.png">
+	<button onclick="openProduct('laundry_soap')">Подробнее</button>
+    <h3>Хозяйственное мыло на кокосовом масле</h3>
+    
+  </div>
+  
+  
+  <div class="card">
+    <img src="image/IMG_20260429_185458.png">
+	<button onclick="openProduct('tar')">Подробнее</button>
+    <h3>Дегтярное мыло</h3>
+    
+  </div>
+</section>
+
+<footer>
+  © 2026 SoapCraft
+</footer>
+
 // закрытие по клику вне окна
 window.onclick = function(e){
   document.querySelectorAll('.modal').forEach(m=>{
