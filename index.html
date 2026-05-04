@@ -185,7 +185,82 @@ footer {
   cursor: pointer;
   font-weight: bold;
 }
+<script>
+// открыть модалку
+function openModal(type){
+  document.getElementById(type + 'Modal').style.display = 'flex';
+}
 
+// закрытие по клику вне окна
+window.onclick = function(e){
+  document.querySelectorAll('.modal').forEach(m=>{
+    if(e.target === m) m.style.display = 'none';
+  });
+}
+
+// регистрация
+function register(){
+  let user = document.getElementById('regUser').value;
+  let pass = document.getElementById('regPass').value;
+
+  if(!user || !pass){
+    alert("Заполни поля");
+    return;
+  }
+
+  localStorage.setItem(user, pass);
+  alert("Аккаунт создан!");
+}
+
+// вход
+function login(){
+  let user = document.getElementById('loginUser').value;
+  let pass = document.getElementById('loginPass').value;
+
+  let saved = localStorage.getItem(user);
+
+  if(saved === pass){
+    localStorage.setItem("currentUser", user); // сохраняем сессию
+    showUser();
+    closeModals();
+  } else {
+    alert("Ошибка входа");
+  }
+}
+
+// показать пользователя
+function showUser(){
+  let user = localStorage.getItem("currentUser");
+  let nav = document.getElementById("nav");
+
+  if(user){
+    nav.innerHTML = `
+      <span>👋 Привет, <b>${user}</b></span>
+      <button onclick="logout()">Выйти</button>
+    `;
+  }
+}
+
+// выход
+function logout(){
+  localStorage.removeItem("currentUser");
+  location.reload();
+}
+
+// закрыть модалки
+function closeModals(){
+  document.querySelectorAll('.modal').forEach(m=>{
+    m.style.display = 'none';
+  });
+}
+
+// проверка при загрузке
+window.onload = function(){
+  showUser();
+}
+</script>
+
+	
 </style>
 </head>
 
