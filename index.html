@@ -246,10 +246,16 @@ footer {
 
 	function openContacts(){
   document.getElementById("contactsModal").style.display = "flex";
+  document.querySelector(".hero").style.display = "none";
+  document.querySelector(".features").style.display = "none";
+  document.querySelector("footer").style.display = "none";
 }
 
 function closeContacts(){
   document.getElementById("contactsModal").style.display = "none";
+  document.querySelector(".hero").style.display = "block";
+  document.querySelector(".features").style.display = "grid";
+  document.querySelector("footer").style.display = "block";
 }
 
 	window.onclick = function(e){
